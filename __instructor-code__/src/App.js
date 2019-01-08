@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import './App.css';
 import axios from 'axios';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +20,7 @@ class App extends Component {
     this.setState({
       user: res.data.userData
     })
+
   }
 
   async login() {
@@ -35,7 +35,7 @@ class App extends Component {
 
   async logout() {
     let res = await axios.get('/logout')
-    this.setState({user: {}})
+    this.setState({ user: {} })
   }
 
   render() {
@@ -43,16 +43,18 @@ class App extends Component {
       <div className="App">
         <h1>Auth Mini</h1>
         <p>
-          Email: <input type="text" onChange={(e) => this.setState({ emailInput: e.target.value })} />
+          Email:
+          <input onChange={(e) => this.setState({ emailInput: e.target.value })} type="text" />
         </p>
         <p>
-          Password: <input type="password" onChange={(e) => this.setState({ passwordInput: e.target.value })} />
+          Password:
+          <input onChange={(e) => this.setState({ passwordInput: e.target.value })} type="text" />
         </p>
         <button onClick={() => this.signup()}>Signup</button>
         <button onClick={() => this.login()}>Login</button>
         <button onClick={() => this.logout()}>Logout</button>
-        <hr/>
-        <p>USER:{JSON.stringify(this.state.user)}</p>
+        <hr />
+        <p>USER: {JSON.stringify(this.state.user)}</p>
       </div>
     );
   }
